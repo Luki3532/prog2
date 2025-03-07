@@ -6,21 +6,20 @@
  * Description: This program implements a queue ADT using a linked list of floats. 
  * The UserQueue class implements the MyQueue interface, which defines the core queue operations: enqueue, dequeue, viewFront, 
  * and isEmpty.
- * The queue is built using a inner class PurchaceNode, which is a node class that is used to create the linked list of floats 
+ * The queue is built using a inner class PurchaseNode, which is a node class that is used to create the linked list of floats 
  * that each represent stocks(10) that the user has purchased.
  * 
  * The program includes a stand-alone driver class QueueApp that uses the UserQueue class to facilitate the user's stock 
- * purchases and sales.
- * a class, UserQueue(outer), that simulates the queue ADT with use of a Linked List that is characterized by the PurchaceNode 
- * class(inner).
- * The UserQueue front and rear are tracked with PurchaceNodes that point to the respective front and rear of the queue.
+ * purchases and sales. A class, UserQueue(outer), that simulates the queue ADT with use of a Linked List that is 
+ * characterized by the PurchaseNode class(inner). The UserQueue front and rear are tracked with PurchaseNodes 
+ * that point to the respective front and rear of the queue.
  * 
  * Overall the program is designed for the purpose of simulating a linked list structure to implement a queue ADT. 
  * By means of making a media for users to abstractly buy and sell stocks with a few other features in the menu system in the 
  * driver class(QueueApp).
  */
 
-import java.util.Scanner;                       // import the Scanner class to get user input(specifically floats)
+import java.util.Scanner;                       // import the Scanner class to get user input.(specifically floats)
 
 
 /*
@@ -28,7 +27,7 @@ import java.util.Scanner;                       // import the Scanner class to g
  * UserQueue implements interface MyQueue, provided by the instructor, which requires the implementation of methods enqueue, 
  * dequeue, viewFront, and isEmpty. The User Queue is a object that facilitates the user's stock purchases and sales. 
  * The QueueApp class makes use of the UserQueue class by implementing a menu which calls the methods and inner class of the 
- * UserQueue class. The inner class PurchaceNode is a node class that is used to create the linked list of floats that each 
+ * UserQueue class. The inner class PurchaseNode is a node class that is used to create the linked list of floats that each 
  * represent stocks(10) that the user has purchased. There are 2 instance variables front and rear that represent the front 
  * and rear of the queue respectively. these nodes help to keep track of the oldest stock purchased by the user and the 
  * newest stock purchased by the user. which lets the program manipulate the linked list by the medium that 
@@ -37,8 +36,8 @@ import java.util.Scanner;                       // import the Scanner class to g
 class UserQueue implements MyQueue {
 
     //instance variables
-    PurchaceNode front;                        // front pointer of the queue
-    PurchaceNode rear;                         // rear pointer of the queue
+    PurchaseNode front;                        // front pointer of the queue.
+    PurchaseNode rear;                         // rear pointer of the queue.
 
     // constructor for UserQueue
     public UserQueue() {
@@ -47,19 +46,19 @@ class UserQueue implements MyQueue {
          * The purpose of the constructor is to ensure a new queue is empty when it is created. 
          * It is to be used in the QueueApp class to create a new queue object(UserQueue).
          */
-        front = null;                           // set the front pointer to null
-        rear = null;                            // set the rear pointer to null
+        front = null;                           // set the front pointer to null.
+        rear = null;                            // set the rear pointer to null.
     }
 
 
     public void enqueue(float price) {
-        PurchaceNode newNode = new PurchaceNode(price);// create a new node with the value of the stocks.
-        if (isEmpty()) {                       // IF the queue is empty THEN set the front and rear pointers to the new node
-            front = newNode;                   // set the front pointer to the new node
-            rear = newNode;                    // set the rear pointer to the new node
-        } else {                               // IF the queue is not empty THEN add the new node to the rear of the queue
-            rear.link = newNode;               // set the link of the rear node to the new node
-            rear = newNode;                    // set the rear pointer to the new node
+        PurchaseNode newNode = new PurchaseNode(price);// create a new node with the value of the stocks.
+        if (isEmpty()) {                       // IF the queue is empty THEN set the front and rear pointers to the new node.
+            front = newNode;                   // set the front pointer to the new node.
+            rear = newNode;                    // set the rear pointer to the new node.
+        } else {                               // IF the queue is not empty THEN add the new node to the rear of the queue.
+            rear.link = newNode;               // set the link of the rear node to the new node.
+            rear = newNode;                    // set the rear pointer to the new node.
         }
     }
 
@@ -69,15 +68,15 @@ class UserQueue implements MyQueue {
          * the front node represents the longest(oldest) standing stock owned by the
          * user.
          * IMPORTANT: the user/program should check if the queue is empty before calling
-         * dequeue
+         * dequeue.
          */
 
         float price = front.price;              // store the value of the front node in a temp variable
-        front = front.link;                     // move the front pointer to the next node
+        front = front.link;                     // move the front pointer to the next node.
         if (front == null) {                    // IF the front pointer is null THEN the queue is empty
-            rear = null;                        // THEN, set the rear pointer to null
+            rear = null;                        // THEN, set the rear pointer to null.
         }
-        return price;                           // in the end return the value of the front node
+        return price;                           // in the end return the value of the front node.
     }
 
     public float viewFront() {
@@ -102,38 +101,38 @@ class UserQueue implements MyQueue {
     }
 
     /*
-     * PurchaceNode class Description: This is a inner class to the UserQueue class. This class is a node class that is 
+     * PurchaseNode class Description: This is a inner class to the UserQueue class. This class is a node class that is 
      * used to create the linked list of floats that each represent stocks(10) that the user has purchased. The class has 2 
-     * instance variables price(float) and link(PurchaceNode). float(price) represents the purchased value of the stock 
+     * instance variables price(float) and link(PurchaseNode). float(price) represents the purchased value of the stock 
      * by the user
      */
-    class PurchaceNode {
+    class PurchaseNode {
 
         // instance variables
         private float price;                                    // the value of the stock(price, float) initialized.
-        private PurchaceNode link;                              // the next node in the linked list(link, PurchaceNode) 
+        private PurchaseNode link;                              // the next node in the linked list(link, PurchaseNode) 
                                                                 // initialized.
 
         // start constructors for Node
-        public PurchaceNode(float initPrice) {
+        public PurchaseNode(float initPrice) {
             /*
-             * PurchaceNode constructor Description: This constructor creates a new node with the value of the stock and 
-             * sets the link to null. The constructor is used to create a new node with the value of the stock and sets 
-             * the link to null. This constructor is used when the user is adding a new stock to the queue. and only price 
-             * is given to the PurchaceNode constructor.
+             * PurchaseNode constructor Description: This constructor creates a new node with the value of the stock and
+             * sets the link to null. The constructor is used to create a new node with the value of the stock and sets
+             * the link to null. This constructor is used when the user is adding a new stock to the queue. and only price
+             * is given to the PurchaseNode constructor.
              */
             this(initPrice, null);                    // use the constructor that handles price and link. set link 
-                                                               // to null and use the parameter initPrice in place of the 
+                                                               // to null and use the parameter initPrice in place of the
                                                                // twin formal parameter.
         }
 
-        public PurchaceNode(float initPrice, PurchaceNode initLink) {
+        public PurchaseNode(float initPrice, PurchaseNode initLink) {
             /*
-             * PurchaceNode constructor Description: This constructor creates a new node with the value of the stock and sets 
+             * PurchaseNode constructor Description: This constructor creates a new node with the value of the stock and sets 
              * the link to the next node in the linked list.
              */
-            price = initPrice;                                // set the price of the stock to the parameter initPrice
-            link = initLink;                                  // set the link of the stock to the parameter initLink          
+            price = initPrice;                                // set the price of the stock to the parameter initPrice.
+            link = initLink;                                  // set the link of the stock to the parameter initLink.        
         }
 
     }
@@ -152,12 +151,16 @@ class UserQueue implements MyQueue {
 public class QueueApp {
 
     public static void main(String[] args) {
-        UserQueue queue = new UserQueue();                            // create a new queue object
-        System.out.println("Welcome to the Queue App");             // print message to user. that the program has started
-        int gainLossTotal = 0;                                        // create a variable to store the total gain/loss 
-                                                                      // of the user
+
+        //instance variables
+        final int STOCK_QUANTITY = 10;                                // define the quantity of stocks that the user can 
+                                                                      // buy/sell at a time.
+        UserQueue queue = new UserQueue();                            // create a new queue object.
+        System.out.println("Welcome to the Queue App");             // print message to user that the program has started.
+        int gainLossTotal = 0;                                        // create a variable to store the total gain/loss
+                                                                      // of the user.
         float choice = -1;                                            // create a variable to store the user's choice 
-                                                                      // for the menu options
+                                                                      // for the menu options.
 
         // while user input is NOT 3 THEN ask the user for their choice of operation on the queue.                                                              
         while (choice != 3) {                                         
@@ -173,7 +176,7 @@ public class QueueApp {
                 queue.enqueue(temp);                                  // push the user input to the queue
                                                                       // print message to user. that the user has added the 
                                                                       // stock to the queue
-                System.out.print("You just purchaced 10 stocks at $" + temp + " totaling $" + temp * 10 + "\n\n");
+                System.out.print("You just purchaced 10 stocks at $" + temp + " totaling $" + temp * STOCK_QUANTITY + "\n\n");
                 continue;                                             // continue the loop from the top.
             }
             if (choice == 1) {                                        // opt2: dequeue[remove item from the queue]
@@ -193,7 +196,7 @@ public class QueueApp {
                                                                       
                     // get the gain/loss of the stock with current price(getUserFloat) and old price(viewFront)
                     // multiply by 10 because the user can only buy/sell 10 stocks at a time.
-                    temp = (getUserFloat(true) - queue.viewFront()) * 10; 
+                    temp = (getUserFloat(true) - queue.viewFront()) * STOCK_QUANTITY; 
                                                                       
                     gainLossTotal += temp;                            // add the value of the stock to the total gain/loss
                     System.out.println("Gained: $" + temp + "\n");    // print the gain/loss to the user
@@ -210,7 +213,7 @@ public class QueueApp {
                 if (queue.isEmpty() == false) {                       // if the queue has a node 
                                                                       // THEN print the value of the node(front node)
                     System.out.println(         
-                            "The item you have currently owned the longest was bought at: " + queue.viewFront() + "\n");
+                            "The item you have currently owned the longest was bought at: $" + queue.viewFront() + "\n");
 
                 } else {
                     System.out.println("NO STOCKS OWNED TO CHECK!\n");   // print message to user. if queue is empty here
@@ -240,7 +243,7 @@ public class QueueApp {
         Scanner sc = new Scanner(System.in); // create a scanner object to get user input
         if (!forPriceInput) { // if the user input is not for the price of the stock THEN print the menu
                               // options
-            System.out.println("0\tPurchace 10 shares of stock.");
+            System.out.println("0\tPurchase 10 shares of stock.");
             System.out.println("1\tSell 10 shares of stock.");
             System.out.println("2\tCheck the purchace price of the oldest 10 owned shares of stock.");
             System.out.println("3\tQuit");
