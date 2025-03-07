@@ -157,7 +157,7 @@ public class QueueApp {
                                                                       // buy/sell at a time.
         UserQueue queue = new UserQueue();                            // create a new queue object.
         System.out.println("Welcome to the Queue App");             // print message to user that the program has started.
-        int gainLossTotal = 0;                                        // create a variable to store the total gain/loss
+        float gainLossTotal = 0;                                      // create a variable to store the total gain/loss
                                                                       // of the user.
         float choice = -1;                                            // create a variable to store the user's choice 
                                                                       // for the menu options.
@@ -172,7 +172,7 @@ public class QueueApp {
             if (choice == 0) {                                        // opt1:enqueue[item to the queue]
                 float temp;
                 System.out.print("The stock costs: $");             // print message to user.
-                temp = getUserFloat(true);              // getting user input for what int they wish to add to the queue
+                temp = getUserFloat(true);              // getting user input for what float they wish to add to the queue
                 queue.enqueue(temp);                                  // push the user input to the queue
                                                                       // print message to user. that the user has added the 
                                                                       // stock to the queue
@@ -227,7 +227,7 @@ public class QueueApp {
         }
 
         // end menu
-        System.out.println("\nTotal gain/loss: $" + gainLossTotal);   // print the total gain/loss to the user before
+        System.out.println("\nTotal Capital gain/loss: $" + gainLossTotal);   // print the total gain/loss to the user before
                                                                       // ending main() and after final G&L is calculated.
     }
 
